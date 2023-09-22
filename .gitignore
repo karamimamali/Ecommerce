@@ -104,3 +104,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# DB
+.sqlite3
+ecommerce/db.sqlite3
