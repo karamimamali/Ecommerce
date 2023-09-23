@@ -4,59 +4,21 @@ import json
 import datetime
 
 from .models import *
+from .utils import cartData, guestCart, guestOrder
 
 def store(request):
+    CartItems = cartData(request)['CartItems']
     products = Product.objects.all()
-    if request.user.is_authenticated:
-        customer = request.user.customer 
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        CartItems = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-        CartItems = order['get_cart_items']
+
     context = {'products':products, 'CartItems':CartItems}
     return render(request, 'store/store.html', context)
 
 def cart(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer 
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        CartItems = order.get_cart_items
-    else:
-        try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart = {}
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-        CartItems = order['get_cart_items']
-        for key in cart:
-            CartItems += cart[key]['quantity']
-
-            product = Product.objects.get(id=key)
-            total = product.price * cart[key]['quantity']
-
-            order['get_cart_items'] += cart[key]['quantity']
-            order['get_cart_total'] += total
-
-    context = {'items': items,  'order': order, 'CartItems':CartItems}
+    context = cartData(request)
     return render(request, 'store/cart.html', context)
 
 def chechout(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer 
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        CartItems = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-        CartItems = order['get_cart_items']
-
-    context = {'items': items,  'order': order, 'CartItems':CartItems}
+    context = cartData(request)
     return render(request, 'store/checkout.html', context)
 
 
@@ -67,9 +29,9 @@ def updateItem(request):
     
     customer = request.user.customer
     product = Product.objects.get(id=productID)
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    order, _ = Order.objects.get_or_create(customer=customer, complete=False)
     
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    orderItem, _ = OrderItem.objects.get_or_create(order=order, product=product)
 
     if action == 'add':
         orderItem.quantity += 1
@@ -91,14 +53,7 @@ def processOrder(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer 
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-
-        total = float(data['form']['total'])
-        order.transaction_id = transaction_id
-
-        if total == order.get_cart_total:
-            order.complete = True
-        order.save()
+        order, _ = Order.objects.get_or_create(customer=customer, complete=False)
 
         if order.shipping:
             ShippingAdresss.objects.create(
@@ -111,7 +66,25 @@ def processOrder(request):
             )
 
     else:
-        print('User not logged in...')
+        customer, order = guestOrder(request, data)
+                
+
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
+
+    if total == order.get_cart_total:
+        order.complete = True
+    order.save()
+
+    if order.shipping:
+        ShippingAdresss.objects.create(
+            customer=customer,
+            order= order,
+            adress= data['shipping']['address'],
+            city= data['shipping']['city'],
+            state= data['shipping']['state'],
+            zipcode= data['shipping']['zipcode']
+        )
 
     return JsonResponse('Order submitted',safe=False)
 

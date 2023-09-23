@@ -4,8 +4,8 @@ from django_cleanup import cleanup
 
 
 class Customer(models.Model):
-    user = models.OneToOneField(User ,on_delete=models.CASCADE)
-    name = models.CharField(max_length=256, null=True)
+    user = models.OneToOneField(User,null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, null=True, blank=True)
     email = models.EmailField(max_length=256, null=True)
 
     def __str__(self) -> str:
