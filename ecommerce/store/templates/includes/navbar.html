@@ -1,24 +1,24 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container"> <!-- Add a container to center the content -->
+        <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-      <div class="form-inline my-2 my-lg-0">
-            <a href="login"class="btn spcbutton">Login</a>
-                
-            <a href="{% url 'cart' %}">
-            <img  id="cart-icon" src="{% static 'images/cart.png' %}">
-            </a>
-            <p id="cart-total">{{CartItems}}</p>
-
-       </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto"> <!-- Align menu items to the right -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+                <a href="#" class="btn spcbutton">Login</a>
+                <a href="{% url 'cart' %}" class="cart-link"> <!-- Added a class for cart link -->
+                    <img id="cart-icon" src="{% static 'images/cart.png' %}" alt="Cart">
+                    <span id="cart-total">{{ CartItems }}</span>
+                </a>
+            </div>
+        </div>
     </div>
-  </nav>
+</nav>

@@ -1,11 +1,313 @@
-body{
-	background-color: rgb(255, 255, 255);
+body {
+    background-color: rgb(255, 255, 255);
 }
 
-h1,h2,h3,h4,h5,h6{
-	color:hsl(0, 0%, 30%);
+h1, h2, h3, h4, h5, h6 {
+    color: hsl(0, 0%, 30%);
+}
+/* Navbar */
+.navbar {
+    background-color: rgb(0, 98, 255) !important;
 }
 
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-toggler {
+    border-color: transparent;
+}
+
+.nav-link {
+    color: #fff;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+/* Cart Icon */
+#cart-icon {
+    width: 25px;
+    display: inline-block;
+    margin-left: 15px;
+    position: relative;
+}
+
+#cart-total {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(255, 0, 0);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+/* Cart Link */
+.cart-link {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+}
+
+/* Login Button */
+.btn.spcbutton {
+    background-color: rgb(201, 225, 228);
+    color: #000;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.btn.spcbutton:hover {
+    background-color: rgb(150, 200, 220);
+}
+
+
+/* Product Card */
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #777;
+}
+
+.thumbnail {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* Add to Cart Button */
+.add-btn {
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+/* View Button */
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+
+/* Cart Page Styles */
+
+/* Cart Summary */
+.cart-summary {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.checkout-btn {
+    margin-top: 10px;
+}
+
+/* Cart Items */
+.cart-items {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.cart-header {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.cart-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cart-col {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+}
+
+.cart-image img {
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.quantity img {
+    width: 20px;
+    cursor: pointer;
+}
+
+/* Add to Cart Button */
+.add-btn {
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Checkout Button */
+.checkout-btn {
+    background-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.checkout-btn:hover {
+    background-color: #1e7e34;
+}
+
+/* Continue Shopping Button Hover Effect */
+.shaded-hover {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transition both background-color and text color */
+    background-color: transparent; /* Set the initial background color to transparent */
+    color: #000; /* Set the initial text color to black */
+}
+
+.shaded-hover:hover {
+    background-color: #007bff; /* Change the background color to blue on hover */
+    color: #fff; /* Change the text color to white on hover */
+}
+
+/* Form Wrapper */
+#form-wrapper {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Form Fields */
+.form-field {
+    width: 100%;
+    display: inline-block;
+    padding: 5px;
+}
+
+/* Shipping Info */
+#shipping-info {
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+/* Form Button */
+#form-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+#form-button:hover {
+    background-color: #1e7e34;
+}
+
+/* Back to Cart Button */
+.btn-outline-dark.shaded-hover {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transition both background-color and text color */
+    background-color: transparent; /* Set the initial background color to transparent */
+    color: #000; /* Set the initial text color to black */
+}
+
+.btn-outline-dark.shaded-hover:hover {
+    background-color: #007bff; /* Change the background color to blue on hover */
+    color: #fff; /* Change the text color to white on hover */
+}
+
+/* Order Summary */
+.box-element {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* PayPal Button Container */
+#paypal-button-container {
+    margin-top: 20px;
+}
+
+/* Order Summary Header */
+.box-element h3 {
+    margin-top: 0;
+}
+
+/* Order Summary Item Rows */
+.cart-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cart-row img.row-image {
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.cart-col {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Responsive Styles for Small Screens */
+@media (max-width: 767px) {
+    .col-lg-6 {
+        margin-top: 10px;
+    }
+    
+    .box-element {
+        padding: 10px;
+    }
+    
+    #form-button {
+        padding: 8px 0;
+    }
+    
+    .cart-row {
+        padding: 5px 0;
+    }
+    
+    .cart-row img.row-image {
+        max-width: 60px;
+        max-height: 60px;
+    }
+}
 .box-element{
 	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
 	background-color: rgb(240, 240, 240);
@@ -100,4 +402,85 @@ h1,h2,h3,h4,h5,h6{
 
 .spcbutton{
 	background-color: rgb(201, 225, 228)
+}
+
+/* Product Detail Page Styles */
+.product-detail {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.product-detail-content {
+    display: flex;
+    align-items: center;
+}
+
+.product-detail-image img {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+.product-detail-info {
+    flex: 1;
+}
+
+.product-detail-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.product-detail-info p {
+    font-size: 16px;
+    color: #333;
+}
+
+.add-to-cart {
+    margin-top: 20px;
+}
+
+.add-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Styles for Small Screens */
+@media (max-width: 767px) {
+    .product-detail-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-detail-image img {
+        margin: 0 auto 20px;
+    }
+}
+
+
+.btn.btn-outline-dark.shaded-hover {
+    margin-right: 10px; /* You can adjust the margin as needed */
+}
+
+/* Style for product image */
+.product-image {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain aspect ratio */
 }

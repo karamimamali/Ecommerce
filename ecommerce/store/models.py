@@ -17,6 +17,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2)
     is_digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)
+    about = models.TextField(blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name

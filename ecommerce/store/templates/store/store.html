@@ -4,14 +4,15 @@
 {% block content %}
     <div class="row">
         {% for product in products %}
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{{product.imageURL}}" alt="No image">
-            <div class="box-element product">
-                <h6><strong>{{product.name}}</strong></h6>
-                <hr>
-                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-                <a class="btn btn-outline-success" href="#">view</a>
-                <h4 style="display: inline-block; float: right;">${{product.price|floatformat:2}}</h4>
+        <div class="col-lg-4 mb-4">
+            <div class="card product-card">
+                <img class="card-img-top thumbnail" src="{{ product.imageURL }}" alt="No image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price|floatformat:2 }}</p>
+                    <button data-product="{{ product.id }}" data-action="add" class="btn btn-primary add-btn update-cart">Add to Cart</button>
+                    <a class="btn btn-outline-success" href="detail/{{ product.id }}">View</a>
+                </div>
             </div>
         </div>
         {% endfor %}

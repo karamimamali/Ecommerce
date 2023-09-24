@@ -21,6 +21,11 @@ def chechout(request):
     context = cartData(request)
     return render(request, 'store/checkout.html', context)
 
+def detail(request, id):
+    product = Product.objects.get(id=id)
+    context = cartData(request)
+    context['product'] = product
+    return render(request, 'store/detail.html', context)
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -87,4 +92,5 @@ def processOrder(request):
         )
 
     return JsonResponse('Order submitted',safe=False)
+
 
